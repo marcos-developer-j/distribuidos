@@ -7,18 +7,19 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['development.env','.env']
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'users',
+      port: 5432,
+      username: 'postgres',
+      password: 'changeme',
+      database: 'mydb',
       entities: [User],
       synchronize: true,
     }),

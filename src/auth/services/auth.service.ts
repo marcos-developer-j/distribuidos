@@ -11,11 +11,8 @@ export class AuthService {
     private jwtSetvice: JwtService,
   ) {}
   async validateuser(email: string, password: string) {
-    console.log('Estoy aqui',process.env.JWT_SECRET);
     const user = await this.userServices.findByEmail(email);
-    console.log(user);
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch);
     if (user && isMatch) return user;
     return null;
   }

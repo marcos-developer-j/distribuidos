@@ -1,11 +1,12 @@
-import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
-import { Controller, Get, Post, Body,UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { UserDto } from 'src/dtos/user.dto';
 import { UsersService } from './users.service';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/models/role.model'; 
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-/* @UseGuards(JwtAuthGuard,RolesGuard) */
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+
+/* @UseGuards(JwtAuthGuard,RolesGuard)  */
 @Controller('users')
 export class UsersController {
   constructor(private userServices: UsersService) {}
